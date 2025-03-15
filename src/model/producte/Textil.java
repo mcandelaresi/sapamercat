@@ -13,6 +13,11 @@ public class Textil extends Producte {
     }
 
     @Override
+    public int getDataCaducitat() {
+        return 99999999;
+    }
+
+    @Override
     public String toString() {
         return super.toString() + " | Composició: " + composicioTextil;
     }

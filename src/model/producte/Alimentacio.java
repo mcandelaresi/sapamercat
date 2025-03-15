@@ -1,16 +1,20 @@
 package model.producte;
 
-import java.time.LocalDate;
-
 public class Alimentacio extends Producte {
-    private LocalDate dataCaducitat;
+    private int dataCaducitat;
 
-    public Alimentacio(String nom, double preu, String codiBarres, LocalDate dataCaducitat) {
+    public Alimentacio(String nom, double preu, String codiBarres, int dataCaducitat) {
         super(nom, preu, codiBarres);
         this.dataCaducitat = dataCaducitat;
     }
 
-    public LocalDate getDataCaducitat() {
+    @Override
+    public int getDataCaducitat() {
         return dataCaducitat;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " | Data de caducitat: " + dataCaducitat;
     }
 }

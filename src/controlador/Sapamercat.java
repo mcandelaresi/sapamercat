@@ -4,12 +4,10 @@ import excepcions.*;
 import model.producte.*;
 import vista.Vista;
 
-import java.time.LocalDate;
 import java.util.*;
 
 public class Sapamercat {
     private static final int MAX_PRODUCTES = 100;
-    private static List<Producte> carroCompra = new ArrayList<>();
     private static Map<Integer, Producte> productes = new HashMap<>();
 
     public static void main(String[] args) {
@@ -80,15 +78,13 @@ public class Sapamercat {
     }
 
     private static void llistatPerCaducitat() {
-        List<Alimentacio> alimentacioList = new ArrayList<>();
-
+        List<Producte> alimentacioList = new ArrayList<>();
         for (Producte producte : productes.values()) {
             if (producte instanceof Alimentacio) {
                 alimentacioList.add((Alimentacio) producte);
             }
         }
-
-        alimentacioList.sort(Comparator.comparing(Alimentacio::getDataCaducitat));
+        alimentacioList.sort(Comparator.comparing(Producte::getDataCaducitat));
         alimentacioList.forEach(System.out::println);
     }
 
@@ -99,6 +95,11 @@ public class Sapamercat {
             try {
                 opcio = scanner.nextInt();
                 scanner.nextLine();
+
+                if (opcio == 0) {
+                    System.out.println("Tornant al menú principal...");
+                    break;
+                }
 
                 System.out.print("Nom: ");
                 String nom = scanner.nextLine();
@@ -111,22 +112,21 @@ public class Sapamercat {
 
                 switch (opcio) {
                     case 1:
-                        System.out.print("Data de caducitat (YYYY-MM-DD): ");
-                        LocalDate dataCaducitat = LocalDate.parse(scanner.nextLine());
-                        Model.introduirProducteCarro(carroCompra, new Alimentacio(nom, preu, codiBarres, dataCaducitat));
+                        System.out.print("Data de caducitat (YYYYMMDD): ");
+                        int dataCaducitat = scanner.nextInt();
+                        scanner.nextLine();
+                        Model.introduirProducteCarro(productes, new Alimentacio(nom, preu, codiBarres, dataCaducitat));
                         break;
                     case 2:
                         System.out.print("Composició tèxtil: ");
                         String composicioTextil = scanner.nextLine();
-                        Model.introduirProducteCarro(carroCompra, new Textil(nom, preu, codiBarres, composicioTextil));
+                        Model.introduirProducteCarro(productes, new Textil(nom, preu, codiBarres, composicioTextil));
                         break;
                     case 3:
                         System.out.print("Dies de garantia: ");
                         int diesGarantia = scanner.nextInt();
-                        Model.introduirProducteCarro(carroCompra, new Electronica(nom, preu, codiBarres, diesGarantia));
-                        break;
-                    case 0:
-                        System.out.println("Tornant al menú principal...");
+                        scanner.nextLine();
+                        Model.introduirProducteCarro(productes, new Electronica(nom, preu, codiBarres, diesGarantia));
                         break;
                     default:
                         System.out.println("Opció no vàlida. Si us plau, tria una altra opció.");
@@ -142,15 +142,16 @@ public class Sapamercat {
 
     private static void passarPerCaixa() {
         try {
-            if (productes.size() > MAX_PRODUCTES) throw new LimitProductesException("S'ha superat el límit de productes.");
+            if (productes.size() > MAX_PRODUCTES)
+                throw new LimitProductesException("S'ha superat el límit de productes.");
             Model.pagar(productes);
-            carroCompra.clear();
+            productes.clear();
         } catch (LimitProductesException e) {
             System.out.println(e.getMessage());
         }
     }
 
     private static void mostrarCarroCompra() {
-        Model.mostrarCarroCompra(carroCompra);
+        Model.mostrarCarroCompra(productes);
     }
 }

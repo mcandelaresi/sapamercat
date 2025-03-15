@@ -1,74 +1,82 @@
 package model.producte;
 
-/**
- * Classe que representa un producte.
- */
-public abstract class Producte implements Comparable<Producte> {
-    private String nom;
-    private double preu;
-    private String codiBarres;
-
-    public Producte(String nom, double preu, String codiBarres) {
-        this.nom = nom;
-        this.preu = preu;
-        this.codiBarres = codiBarres;
-    }
-
     /**
-     * Obté el nom del producte.
-     * @return el nom del producte
+     * Classe que representa un producte.
      */
-    public String getNom() {
-        return nom;
-    }
+    public abstract class Producte implements Comparable<Producte> {
+        private String nom;
+        private double preu;
+        private String codiBarres;
 
-    /**
-     * Estableix el nom del producte.
-     * @param nom el nom del producte
-     */
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+        public Producte(String nom, double preu, String codiBarres) {
+            this.nom = nom;
+            this.preu = preu;
+            this.codiBarres = codiBarres;
+        }
 
-    /**
-     * Obté el preu del producte.
-     * @return el preu del producte
-     */
-    public double getPreu() {
-        return preu;
-    }
+        public abstract int getDataCaducitat();
 
-    /**
-     * Estableix el preu del producte.
-     * @param preu el preu del producte
-     */
-    public void setPreu(double preu) {
-        this.preu = preu;
-    }
+        /**
+         * Obté el nom del producte.
+         * @return el nom del producte
+         */
+        public String getNom() {
 
-    /**
-     * Obté el codi de barres del producte.
-     * @return el codi de barres del producte
-     */
-    public String getCodiBarres() {
-        return codiBarres;
-    }
+            return nom;
+        }
 
-    /**
-     * Estableix el codi de barres del producte.
-     * @param codiBarres el codi de barres del producte
-     */
-    public void setCodiBarres(String codiBarres) {
-        this.codiBarres = codiBarres;
-    }
+        /**
+         * Estableix el nom del producte.
+         * @param nom el nom del producte
+         */
+        public void setNom(String nom) {
+            this.nom = nom;
+        }
 
-    @Override
-    public String toString() {
-        return nom + " | " + preu + "€";
-    }
+        /**
+         * Obté el preu del producte.
+         * @return el preu del producte
+         */
+        public double getPreu() {
+            return preu;
+        }
 
-    @Override
-    public int compareTo(Producte other) {
-        return this.nom.compareTo(other.nom);
+        /**
+         * Estableix el preu del producte.
+         * @param preu el preu del producte
+         */
+        public void setPreu(double preu) {
+
+            this.preu = preu;
+        }
+
+        /**
+         * Obté el codi de barres del producte.
+         * @return el codi de barres del producte
+         */
+        public String getCodiBarres() {
+
+            return codiBarres;
+        }
+
+        /**
+         * Estableix el codi de barres del producte.
+         * @param codiBarres el codi de barres del producte
+         */
+        public void setCodiBarres(String codiBarres) {
+
+            this.codiBarres = codiBarres;
+        }
+
+        @Override
+        public String toString() {
+
+            return nom + " | " + preu + "€";
+        }
+
+        @Override
+        public int compareTo(Producte other) {
+
+            return this.nom.compareTo(other.nom);
+        }
     }
-}
