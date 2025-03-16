@@ -1,62 +1,44 @@
-SapaMercat
-SAPAMERCAT és una aplicació en Java per gestionar un carret de la compra en temps real, seguint el model MVC.
+# 🛒 SAPAMERCAT | DAW 🏪
 
-Característiques
+## 🚀 Sobre el projecte
+**SAPAMERCAT** és una aplicació desenvolupada en **Java** per gestionar un **carret de la compra en temps real**, seguint el patró **MVC**.
 
-Permet gestionar productes de tres tipus: Alimentació, Tèxtil i Electrònica.
+## 📌 Característiques principals
+✅ **Gestió de productes**: Alimentació, Tèxtil i Electrònica.  
+✅ **Càlcul automàtic del preu** segons el tipus de producte.  
+✅ **Límit de 100 productes** al carret.  
+✅ **Menú interactiu** per gestionar el magatzem, afegir productes i passar per caixa.  
+✅ **Ús d'interfícies** per organitzar millor la funcionalitat.  
 
-Calcula el preu final segons regles específiques per a cada tipus de producte.
+## 📁 Estructura del projecte
+```plaintext
+sapamercat/
+├── controlador/
+│   ├── Sapamercat.java  # Classe principal
+├── model/producte/
+│   ├── Producte.java    # Classe abstracta
+│   ├── Alimentacio.java # Producte d'alimentació
+│   ├── Textil.java      # Producte tèxtil
+│   ├── Electronica.java # Producte electrònic
+│   ├── Model.java       # Gestió de productes
+├── vista/
+│   ├── Vista.java       # Menús i visualització
+```
 
-Limita el carret a un màxim de 100 productes.
+## 🛠️ Tecnologies utilitzades
+🔹 **Java** (POO i excepcions personalitzades).  
+🔹 **Collections API** (HashMap, ArrayList).  
+🔹 **MVC** per separar lògica i interfície.  
 
-Implementa un menú interactiu per gestionar el magatzem, afegir productes, passar per caixa i mostrar el carret.
+## 🎮 Funcionament
+🔹 **Gestió del magatzem**: Productes ordenats per data de caducitat.  
+🔹 **Afegir productes**: Alimentació, Tèxtil o Electrònica.  
+🔹 **Passar per caixa**: Calcula el total i controla el límit de productes.  
+🔹 **Mostrar carret de la compra**: Veure productes afegits.  
 
-Inclou interfícies per organitzar millor la funcionalitat i obtenir punts extra.
 
-Estructura del projecte
+## 📢 Contacte
+📌 Desenvolupat com a part del curs de **Desenvolupament d'Aplicacions Web (DAW)**.  
+📧 Per dubtes o millores, pots contactar-me!  
 
-El projecte està organitzat en els següents paquets:
 
-controlador: Conté la classe principal Sapamercat.java, que gestiona la lògica del programa i la interacció amb l'usuari.
-
-model.producte: Defineix la jerarquia de classes per als diferents tipus de productes:
-
-Producte.java (classe abstracta)
-
-Alimentacio.java
-
-Textil.java
-
-Electronica.java
-
-Model.java (gestió dels productes i càlculs necessaris)
-
-vista: Conté la classe Vista.java, que gestiona la visualització del menú i les opcions disponibles.
-
-Funcionament
-
-Gestió del magatzem i compres
-
-Llistar productes per data de caducitat.
-
-Generar un tiquet de compra.
-
-Mostrar la composició dels productes tèxtils.
-
-Afegir productes
-
-Alimentació: Nom, preu, codi de barres i data de caducitat.
-
-Tèxtil: Nom, preu, codi de barres i composició.
-
-Electrònica: Nom, preu, codi de barres i dies de garantia.
-
-Passar per caixa
-
-Calcula el total de la compra i buida el carret.
-
-Controla que no se superi el límit de productes.
-
-Mostrar carret de la compra
-
-Llista els productes actuals afegits al carret.
