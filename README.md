@@ -1,4 +1,4 @@
-SapaMercat
+#SapaMercat
 SAPAMERCAT és una aplicació en Java per gestionar un carret de la compra en temps real, seguint el model MVC.
 
 Característiques
